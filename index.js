@@ -40,6 +40,34 @@ function getDiagonalMoves(x, y, xMoves, yMoves, pieceMoves){
     return xyMovesArray.toString();
 }
 
+
+//Seperate Function to check all possible moves a horse can make since it can move 2.5 steps
+function getHorseMoves(x, y, xMoves, yMoves){
+    const moveComplete = [];
+    for(let moves of [1, -1]){
+        if((xMoves.indexOf(x)+moves >= 0) && (xMoves.indexOf(x)+moves <= 7)){
+            var moveAlpha = xMoves[xMoves.indexOf(x)+moves];
+        }
+        if((xMoves.indexOf(x)+(moves*2) >= 0) && (xMoves.indexOf(x)+(moves*2) <= 7)){
+            var moveSecond = xMoves[xMoves.indexOf(x)+(moves*2)];
+        }
+        for(let moreMoves of [moves*1, moves*(-1)]){
+            let doubleMoves = moreMoves*2;
+            if(moveSecond!=undefined && (yMoves.indexOf(y)+moreMoves >= 0) && (yMoves.indexOf(y)+moreMoves <= 7)){
+                if(!moveComplete.includes(moveSecond+yMoves[yMoves.indexOf(y)+moreMoves])){
+                    moveComplete.push(moveSecond+yMoves[yMoves.indexOf(y)+moreMoves]);
+                }
+            }
+            if(moveAlpha!=undefined && (yMoves.indexOf(y)+doubleMoves >= 0) && (yMoves.indexOf(y)+doubleMoves <= 7)){
+                if(!moveComplete.includes(moveAlpha+yMoves[yMoves.indexOf(y)+doubleMoves])){
+                    moveComplete.push(moveAlpha+yMoves[yMoves.indexOf(y)+doubleMoves]);
+                }
+            }
+        }
+    }
+    return moveComplete;
+}
+
 //Function to check all possible moves piece can move from it's current position
 //Parameters Accepted is one of the Pieces from (King, Queen, Bishop, Horse, Rook, Pawn)
 //And It's Current position which from range A1,A2,A3,A4,A5,A6,A7,A8, similarly for B1...B8, C1...C8, D1...D8,
@@ -98,6 +126,10 @@ function possibleMoves(piece, pos){
         case "Pawn":
             //Get Horizontal Moves, Pawn can move only in only one direction and we are assuming that board is empty so no diagonal move
             possibleMovesArray.push(getVerticalMoves(pos[0], pos[1], yMoves, pawnMoves));
+          break;
+        case "Horse":
+            //Get possible moves for Horse since it can move 2.5 steps
+            possibleMovesArray.push(getHorseMoves(pos[0], pos[1], xMoves, yMoves));
           break;
         default:
             console.log("Invalid Input");
