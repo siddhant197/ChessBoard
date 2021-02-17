@@ -51,7 +51,8 @@ function possibleMoves(piece, pos){
     const yMoves = ['1','2','3','4','5','6','7','8'];
     const validPiece = ['King','Queen','Bishop','Horse', 'Rook', 'Pawn'];
     const kingMoves = [1, -1]; //Since King can only move +1 or -1 in either of the directions
-    const bqMoves = [1,-1,2,-2,3,-3,4,-4,5,-5,6,-6,7,-7,8,-8]; //Since Bishop, Queen can move across board in either of the directions
+    const rqbMoves = [1,-1,2,-2,3,-3,4,-4,5,-5,6,-6,7,-7,8,-8]; //Since Bishop, Queen can move across board in either of the directions
+    const pawnMoves = [1];
     const possibleMovesArray = []; //Array to store all the possible moves a piece can move
 
     //Checking if the input given are either of valid pieces
@@ -78,18 +79,25 @@ function possibleMoves(piece, pos){
         //Get Moves for Queen
         case "Queen":
             //Get Horizontal Moves, Vertical and Diagonal Moves
-            possibleMovesArray.push(getHorizontalMoves(pos[0], pos[1], xMoves, queenMoves));
-            possibleMovesArray.push(getVerticalMoves(pos[0], pos[1], yMoves, queenMoves));
-            possibleMovesArray.push(getDiagonalMoves(pos[0], pos[1], xMoves, yMoves, queenMoves));
+            possibleMovesArray.push(getHorizontalMoves(pos[0], pos[1], xMoves, rqbMoves));
+            possibleMovesArray.push(getVerticalMoves(pos[0], pos[1], yMoves, rqbMoves));
+            possibleMovesArray.push(getDiagonalMoves(pos[0], pos[1], xMoves, yMoves, rqbMoves));
           break;
+        //Get Moves for Bishop
         case "Bishop":
             //Get Diagonal Moves since Bishop can only move in this direction
-            possibleMovesArray.push(getDiagonalMoves(pos[0], pos[1], xMoves, yMoves, queenMoves));
+            possibleMovesArray.push(getDiagonalMoves(pos[0], pos[1], xMoves, yMoves, rqbMoves));
           break;
+        //Get Moves for Rook
         case "Rook":
             //Get Horizontal Moves, Vertical Moves since Rook can move only in these directions
             possibleMovesArray.push(getHorizontalMoves(pos[0], pos[1], xMoves, rqbMoves));
             possibleMovesArray.push(getVerticalMoves(pos[0], pos[1], yMoves, rqbMoves));
+          break;
+        //Get Moves for Pawn
+        case "Pawn":
+            //Get Horizontal Moves, Pawn can move only in only one direction and we are assuming that board is empty so no diagonal move
+            possibleMovesArray.push(getVerticalMoves(pos[0], pos[1], yMoves, pawnMoves));
           break;
         default:
             console.log("Invalid Input");
