@@ -139,3 +139,24 @@ test('Calling possibleMoves with Pawn and Random position "Pawn", "B8" to return
     var returnVal = possibleMoves("Pawn","B8");
     expect(returnVal).toBe(false);
 });
+
+//Horse Test Cases
+test('Calling possibleMoves with Horse and Center position "Horse", "E3" to return correct values', () => {
+    var returnVal = possibleMoves("Horse","E3");
+    expect(returnVal).toEqual("G4,F5,G2,F1,C2,D1,C4,D5");
+});
+
+test('Calling possibleMoves with Horse and Corner position "Horse", "A1" to return correct values', () => {
+    var returnVal = possibleMoves("Horse","A1");
+    expect(returnVal).toEqual("C2,B3");
+});
+
+test('Calling possibleMoves with Horse and Boundary Middle position "Horse", "A4" to return correct values', () => {
+    var returnVal = possibleMoves("Horse","A4");
+    expect(returnVal).toEqual("C5,B6,C3,B2");
+});
+
+test('Calling possibleMoves with Horse and Random position "Horse", "B7" to return correct values', () => {
+    var returnVal = possibleMoves("Horse","B7");
+    expect(returnVal).toEqual("D8,D6,C5,A5");
+});
