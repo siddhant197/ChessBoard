@@ -49,22 +49,42 @@ test('Calling possibleMoves with King and Random position "King", "B7" to return
     expect(returnVal).toEqual("C7,A7,B8,B6,C8,C6,A6,A8");
 });
 
-test('Calling possibleMoves with King and Center position "Queen", "D5" to return correct values', () => {
+test('Calling possibleMoves with Queen and Center position "Queen", "D5" to return correct values', () => {
     var returnVal = possibleMoves("Queen","D5");
     expect(returnVal).toEqual("E5,C5,F5,B5,G5,A5,H5,D6,D4,D7,D3,D8,D2,D1,E6,E4,C4,C6,F7,F3,B3,B7,G8,G2,A2,A8,H1");
 });
 
-test('Calling possibleMoves with King and Corner position "Queen", "A1" to return correct values', () => {
+test('Calling possibleMoves with Queen and Corner position "Queen", "A1" to return correct values', () => {
     var returnVal = possibleMoves("Queen","A1");
     expect(returnVal).toEqual("B1,C1,D1,E1,F1,G1,H1,A2,A3,A4,A5,A6,A7,A8,B2,C3,D4,E5,F6,G7,H8");
 });
 
-test('Calling possibleMoves with King and Boundary Middle position "Queen", "A4" to return correct values', () => {
+test('Calling possibleMoves with Queen and Boundary Middle position "Queen", "A4" to return correct values', () => {
     var returnVal = possibleMoves("Queen","A4");
     expect(returnVal).toEqual("B4,C4,D4,E4,F4,G4,H4,A5,A3,A6,A2,A7,A1,A8,B5,B3,C6,C2,D7,D1,E8");
 });
 
-test('Calling possibleMoves with King and Random position "Queen", "B7" to return correct values', () => {
+test('Calling possibleMoves with Queen and Random position "Queen", "B7" to return correct values', () => {
     var returnVal = possibleMoves("Queen","B7");
     expect(returnVal).toEqual("C7,A7,D7,E7,F7,G7,H7,B8,B6,B5,B4,B3,B2,B1,C8,C6,A6,A8,D5,E4,F3,G2,H1");
+});
+
+test('Calling possibleMoves with Bishop and Center position "Bishop", "D5" to return correct values', () => {
+    var returnVal = possibleMoves("Bishop","D5");
+    expect(returnVal).toEqual("E6,E4,C4,C6,F7,F3,B3,B7,G8,G2,A2,A8,H1");
+});
+
+test('Calling possibleMoves with Bishop and Corner position "Bishop", "A1" to return correct values', () => {
+    var returnVal = possibleMoves("Bishop","A1");
+    expect(returnVal).toEqual("B2,C3,D4,E5,F6,G7,H8");
+});
+
+test('Calling possibleMoves with Bishop and Boundary Middle position "Bishop", "A4" to return correct values', () => {
+    var returnVal = possibleMoves("Bishop","A4");
+    expect(returnVal).toEqual("B5,B3,C6,C2,D7,D1,E8");
+});
+
+test('Calling possibleMoves with Bishop and Random position "Bishop", "B7" to return correct values', () => {
+    var returnVal = possibleMoves("Bishop","B7");
+    expect(returnVal).toEqual("C8,C6,A6,A8,D5,E4,F3,G2,H1");
 });
