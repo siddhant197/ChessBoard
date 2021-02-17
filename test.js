@@ -29,3 +29,8 @@ test('Calling possibleMoves with wrong piece parameter "Kinger" to return false'
     expect(returnVal).toBe(false);
 });
 
+test('Calling possibleMoves with King and Center position "King", "D5" to return correct values', () => {
+    var returnVal = possibleMoves("King","D5");
+    expect(returnVal).toEqual("E5,C5,D6,D4,E6,E4,C4,C6");
+});
+
