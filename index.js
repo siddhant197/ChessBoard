@@ -135,8 +135,13 @@ function possibleMoves(piece, pos){
             console.log("Invalid Input");
             return false;
       }
-      console.log(possibleMovesArray.toString());
-      return possibleMovesArray.toString();
+      if(possibleMovesArray.length>0 && possibleMovesArray.toString()!=""){
+          console.log(possibleMovesArray.toString());
+          return possibleMovesArray.toString();
+        }else{
+          console.log("No Possible Move");
+          return false;
+        }
 }
 
 module.exports = possibleMoves;
