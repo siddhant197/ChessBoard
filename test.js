@@ -34,3 +34,17 @@ test('Calling possibleMoves with King and Center position "King", "D5" to return
     expect(returnVal).toEqual("E5,C5,D6,D4,E6,E4,C4,C6");
 });
 
+test('Calling possibleMoves with King and Corner position "King", "A1" to return correct values', () => {
+    var returnVal = possibleMoves("King","A1");
+    expect(returnVal).toEqual("B1,A2,B2");
+});
+
+test('Calling possibleMoves with King and Boundary Middle position "King", "A4" to return correct values', () => {
+    var returnVal = possibleMoves("King","A4");
+    expect(returnVal).toEqual("B4,A5,A3,B5,B3");
+});
+
+test('Calling possibleMoves with King and Random position "King", "B7" to return correct values', () => {
+    var returnVal = possibleMoves("King","B7");
+    expect(returnVal).toEqual("C7,A7,B8,B6,C8,C6,A6,A8");
+});
