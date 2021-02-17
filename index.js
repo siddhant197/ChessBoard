@@ -21,6 +21,17 @@ function possibleMoves(piece, pos){
         console.log("Invalid Input");
         return false;
     }
+
+    //Switch case to validate between Pieces
+    switch(piece) {
+        case "King":
+          break;
+        case "Queen":
+          break;
+        default:
+            console.log("Invalid Input");
+            return false;
+      } 
 }
 
 module.exports = possibleMoves;
