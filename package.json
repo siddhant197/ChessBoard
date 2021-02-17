@@ -1,0 +1,19 @@
+{
+  "name": "chessboard",
+  "version": "1.0.0",
+  "description": "Chessboard App to calculate all possible moves a piece can move from it's current position",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddhant197/ChessBoard.git"
+  },
+  "author": "Siddhant Aggarwal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siddhant197/ChessBoard/issues"
+  },
+  "homepage": "https://github.com/siddhant197/ChessBoard#readme"
+}
